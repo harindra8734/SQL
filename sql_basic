@@ -1,0 +1,70 @@
+--- command to see the list of databases
+
+
+show databases;
+
+--- how to create a database
+
+create database noob_db;
+
+--- how to delete the database
+
+drop database employee_de;
+
+--- to get inside a database;
+
+use noob_db;
+
+--- command to create table
+
+create table if not exists employee 
+(
+id int,
+emp_name varbinary(20)
+
+
+);
+
+--- command to see the table in database
+
+show tables;
+--- command to see the table definations
+show create table employee;
+
+--- create employee table with few more columns
+
+create table if not exists employee_v1
+(
+id int,
+emp_name varchar(25),
+salary double,
+hiring_data date
+);
+--- syntax to insert data
+insert into employee_v1 values(1,'harindra',15000,'2023-07-16');
+insert into employee_v1 values(2,'shashank',123445423,'2019-12-30');
+insert into employee_v1 values(3,'shank',3445423,'2019-9-03');
+insert into employee_v1 values(4,'kumar',123320,'2018-04-30');
+insert into employee_v1 values(5,'Rahul',123445423,'2023-12-30');
+insert into employee_v1 values(5,'kunal',123445,'2023-09-12');
+select * from employee_v1;
+
+--- Example table for integrity constraints
+create table if not exists employee_v2(
+id int not null, 
+name varchar(20) not null,
+salary double,
+hiring_date date default '2022-01-01',
+unique (id),
+check (salary<12000)
+);
+---exmple 1 for IC failure
+insert into employee_v2 values(2,'harindra',3000,'2023-09-12');
+insert into employee_v2 values(2,'golu',3000,'2023-09-12');
+insert into employee_v2 values(3,'rajat',2000,'2012-12-02');
+insert into employee_v2 values(4,'kumar',1000,'2023-05-23');
+insert into employee_v2 values(5,'kumar',1000,'2023-05-23');
+insert into employee_v2 (id,name,salary)
+values(7,'neeraj',2003);
+select * from employee_v2;
+
